@@ -32,8 +32,7 @@ class LightningCounter(
       context.system.scheduler.scheduleOnce(
         safetyThresholdTimeWindow, self, CheckState(timeMillis + safetyThresholdTimeWindow.toMillis)
       )
-    case CheckState(_) =>
-      println("Checking state in safe state. No-op.")
+    case CheckState(_) => // No-op
     case _ => ???
   }
   def hazardState(strikes: Seq[Long]): Receive = {
